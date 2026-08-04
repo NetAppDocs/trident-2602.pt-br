@@ -28,6 +28,7 @@ Para evitar possíveis falhas, você pode desativar todos os agendamentos de sna
 ====
 
 
+[[step-1-select-a-version]]
 == Passo 1: selecione uma versão
 
 As versões do Trident Protect seguem uma convenção de nomenclatura baseada em datas `YY.MM`, onde "YY" são os dois últimos dígitos do ano e "MM" é o mês. As versões com ponto seguem uma `YY.MM.X` convenção, onde "X" é o nível de patch. Você selecionará a versão para atualizar com base na versão da qual está atualizando.
@@ -43,6 +44,7 @@ As versões do Trident Protect seguem uma convenção de nomenclatura baseada em
 
 
 
+[[step-2-upgrade-trident-protect]]
 == Etapa 2: atualize Trident Protect
 
 Para atualizar Trident Protect, execute as seguintes etapas.

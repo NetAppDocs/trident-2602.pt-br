@@ -19,6 +19,7 @@ NOTE: Para obter ajuda com Trident, crie um pacote de suporte usando  `tridentct
 
 
 
+[[general-troubleshooting]]
 == Solução de problemas gerais
 
 * Se o Trident pod não iniciar corretamente (por exemplo, quando o Trident pod estiver preso na `ContainerCreating` fase com menos de dois contêineres prontos), executar `kubectl -n trident describe deployment trident` e `kubectl -n trident describe pod trident-********-****` pode fornecer informações adicionais. Obter os logs do kubelet (por exemplo, via `journalctl -xeu kubelet`) também pode ser útil.
@@ -71,6 +72,7 @@ Instalado com tridentctl::
 
 
 
+[[unsuccessful-trident-deployment-using-the-operator]]
 == Implantação malsucedida do Trident usando o operador
 
 Se você estiver implantando Trident usando o operador, o status de `TridentOrchestrator` muda de `Installing` para `Installed`. Se você observar o status `Failed` e o operador não conseguir se recuperar sozinho, você deve verificar os logs do operador executando o seguinte comando:
@@ -138,6 +140,7 @@ Para resolver o problema, você deve editar o `TridentOrchestrator` CR. Alternat
 
 
 
+[[unsuccessful-trident-deployment-using-tridentctl]]
 == Implantação malsucedida do Trident usando `tridentctl`
 
 Para ajudar a descobrir o que deu errado, você pode executar o instalador novamente usando o ``-d`` argumento, o que ativará o modo de depuração e ajudará você a entender qual é o problema:
@@ -160,6 +163,7 @@ INFO Trident uninstallation succeeded.
 ----
 
 
+[[completely-remove-trident-and-crds]]
 == Remova completamente Trident e os CRDs
 
 Você pode remover completamente Trident e todos os CRDs criados e os recursos personalizados associados.
@@ -199,12 +203,14 @@ tridentctl obliviate crd
 ====
 
 
+[[nvme-node-unstaging-failure-with-rwx-raw-block-namespaces-o-kubernetes-1-26]]
 == Falha no desempacotamento de nó NVMe com namespaces de bloco bruto RWX no Kubernetes 1.26
 
 Se você estiver executando o Kubernetes 1.26, a desestabilização de nós pode falhar ao usar NVMe/TCP com namespaces de bloco bruto RWX. Os seguintes cenários fornecem uma solução alternativa para a falha. Como alternativa, você pode atualizar o Kubernetes para 1.27.
 
 
 
+[[deleted-the-namespace-and-pod]]
 === Excluídos o namespace e o pod
 
 Considere um cenário em que você tenha um namespace gerenciado pelo Trident (volume persistente NVMe) anexado a um pod. Se você excluir o namespace diretamente do backend ONTAP, o processo de descompactação ficará travado após você tentar excluir o pod. Esse cenário não afeta o cluster Kubernetes nem outras funcionalidades.
@@ -214,6 +220,7 @@ Desmonte o volume persistente (correspondente a esse namespace) do respectivo n�
 
 
 
+[[blocked-datalifs]]
 === LIFs de dados bloqueados
 
  If you block (or bring down) all the dataLIFs of the NVMe Trident backend, the unstaging process gets stuck when you attempt to delete the pod. In this scenario, you cannot run any NVMe CLI commands on the Kubernetes node.
@@ -222,6 +229,7 @@ Traga o dataLIFS de volta para restaurar a funcionalidade completa.
 
 
 
+[[deleted-namespace-mapping]]
 === Mapeamento de namespace excluído
 
  If you remove the `hostNQN` of the worker node from the corresponding subsystem, the unstaging process gets stuck when you attempt to delete the pod. In this scenario, you cannot run any NVMe CLI commands on the Kubernetes node.
@@ -230,6 +238,7 @@ Adicione o  `hostNQN` de volta ao subsistema.
 
 
 
+[[nfsv4-2-clients-report-invalid-argument-after-upgrading-ontap-when-when-expecting-v4-2-xattrs-being-enabled]]
 == Clientes NFSv4.2 relatam "argumento inválido" após atualizar o ONTAP quando esperam que o "v4.2-xattrs" esteja habilitado
 
 Após a atualização do ONTAP, os clientes NFSv4.2 podem apresentar erros de "argumento inválido" ao tentar montar exportações NFSv4.2. Esse problema ocorre quando a `v4.2-xattrs` opção não está habilitada na SVM. Solução alternativa: habilite a `v4.2-xattrs` opção na SVM ou atualize para ONTAP 9.12.1 ou posterior, onde essa opção já está habilitada por padrão.

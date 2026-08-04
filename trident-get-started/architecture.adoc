@@ -16,6 +16,7 @@ Trident é executado como um único Controller Pod mais um Node Pod em cada nó 
 
 
 
+[[understanding-controller-pods-and-node-pods]]
 == Entendendo os pods do controlador e os pods do nó
 
 Trident é implantado como um único <<Pod do Trident Controller>> e um ou mais <<Pods de nó do Trident>> no cluster Kubernetes e usa os contêineres sidecar CSI padrão do Kubernetes para simplificar a implantação dos plugins CSI. link:https://kubernetes-csi.github.io/docs/sidecar-containers.html["Contêineres Sidecar CSI do Kubernetes"^] são mantidos pela comunidade de armazenamento do Kubernetes.
@@ -31,6 +32,7 @@ image::../media/trident-arch.png[Diagrama da arquitetura Trident no cluster Kube
 
 
 
+[[trident-controller-pod]]
 === Pod do Trident Controller
 
 O Trident Controller Pod é um único Pod que executa o plugin CSI Controller.
@@ -45,6 +47,7 @@ image::../media/controller-pod.png[Diagrama do Pod do Trident Controller executa
 
 
 
+[[trident-node-pods]]
 === Pods de nó do Trident
 
 Os Pods do Trident Node são Pods privilegiados que executam o plugin CSI Node.
@@ -59,6 +62,7 @@ image::../media/node-pod.png[Diagrama do Trident Node Pod executando o plugin CS
 
 
 
+[[supported-kubernetes-cluster-architectures]]
 == Arquiteturas de cluster Kubernetes suportadas
 
 Trident é compatível com as seguintes arquiteturas do Kubernetes:

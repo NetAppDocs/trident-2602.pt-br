@@ -22,6 +22,7 @@ Se você deseja utilizar a funcionalidade de instantâneo, instale o complemento
 
 
 
+[[install-trident-via-helm]]
 == Instale Trident via helm
 
 [role="tabbed-block"]
@@ -106,12 +107,14 @@ helm install trident-operator netapp-trident/trident-operator --version 100.2502
 ====
 
 
+[[install-trident-via-the-eks-add-on]]
 == Instale o Trident via o add-on EKS
 
 O Trident EKS add-on inclui os patches de segurança mais recentes, correções de bugs e é validado pela AWS para funcionar com o Amazon EKS. O EKS add-on permite garantir de forma consistente que seus clusters Amazon EKS estejam seguros e estáveis e reduz a quantidade de trabalho necessária para instalar, configurar e atualizar add-ons.
 
 
 
+[[prerequisites]]
 === Pré-requisitos
 
 Certifique-se de ter o seguinte antes de configurar o add-on Trident para AWS EKS:
@@ -128,6 +131,7 @@ Certifique-se de ter o seguinte antes de configurar o add-on Trident para AWS EK
 
 
 
+[[enable-the-trident-add-on-for-aws]]
 === Habilite o complemento Trident para AWS
 
 [role="tabbed-block"]
@@ -235,6 +239,7 @@ eksctl create addon --name netapp_trident-operator --cluster <cluster_name> --fo
 ====
 
 
+[[update-the-trident-eks-add-on]]
 === Atualize o complemento Trident EKS
 
 [role="tabbed-block"]
@@ -299,6 +304,7 @@ Se você remover a  `--force` opção e alguma das configurações do add-on do 
 ====
 
 
+[[uninstallremove-the-trident-eks-add-on]]
 === Desinstalar/remover o Trident EKS add-on
 
 Você tem duas opções para remover um add-on do Amazon EKS:

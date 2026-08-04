@@ -16,6 +16,7 @@ Com Trident, você pode atribuir nomes e rótulos significativos aos volumes que
 
 
 
+[[before-you-begin]]
 == Antes de começar
 
 Suporte para nomes e rótulos de volume personalizáveis:
@@ -27,6 +28,7 @@ Suporte para nomes e rótulos de volume personalizáveis:
 
 
 
+[[limitations]]
 == Limitações
 
 * Os nomes de volumes personalizados são compatíveis apenas com drivers ONTAP locais.
@@ -36,6 +38,7 @@ Suporte para nomes e rótulos de volume personalizáveis:
 
 
 
+[[key-behaviors-of-customizable-volume-names]]
 == Principais comportamentos dos nomes de volume personalizáveis
 
 * Se ocorrer uma falha devido à sintaxe inválida em um modelo de nome, a criação do backend falhará. No entanto, se a aplicação do modelo falhar, o volume será nomeado de acordo com a convenção de nomenclatura existente.
@@ -44,6 +47,7 @@ Suporte para nomes e rótulos de volume personalizáveis:
 
 
 
+[[backend-configuration-examples-with-name-template-and-labels]]
 == Exemplos de configuração de backend com template de nome e rótulos
 
 É possível definir modelos de nomes personalizados no nível raiz e/ou no nível do pool.
@@ -104,6 +108,7 @@ Suporte para nomes e rótulos de volume personalizáveis:
 ----
 
 
+[[name-template-examples]]
 == Exemplos de modelos de nome
 
 *Exemplo 1*:
@@ -120,6 +125,7 @@ Suporte para nomes e rótulos de volume personalizáveis:
 ----
 
 
+[[points-to-consider]]
 == Pontos a considerar
 
 . No caso de importações de volume, os rótulos são atualizados somente se o volume existente possuir rótulos em um formato específico. Por exemplo: `{"provisioning":{"Cluster":"ClusterA", "PVC": "pvcname"}}`.

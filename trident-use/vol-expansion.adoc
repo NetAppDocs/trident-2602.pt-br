@@ -16,6 +16,7 @@ Trident oferece aos usuários do Kubernetes a capacidade de expandir seus volume
 
 
 
+[[expand-an-iscsi-volume]]
 == Expandir um volume iSCSI
 
 Você pode expandir um iSCSI Persistent Volume (PV) usando o provisionador CSI.
@@ -25,6 +26,7 @@ NOTE: A expansão de volume iSCSI é suportada pelos  `ontap-san`, `ontap-san-ec
 
 
 
+[[step-1-configure-the-storageclass-to-support-volume-expansion]]
 === Passo 1: Configurar o StorageClass para suportar a expansão de volume
 
 Edite a definição de StorageClass para definir o campo  `allowVolumeExpansion` como  `true`.
@@ -48,6 +50,7 @@ Para um StorageClass já existente, edite-o para incluir o `allowVolumeExpansion
 
 
 
+[[step-2-create-a-pvc-with-the-storageclass-you-created]]
 === Passo 2: Crie um PVC com o StorageClass que você criou
 
 Edite a definição de PVC e atualize o  `spec.resources.requests.storage` para refletir o novo tamanho desejado, que deve ser maior que o tamanho original.
@@ -84,6 +87,7 @@ pvc-8a814d62-bd58-4253-b0d1-82f2885db671   1Gi        RWO            Delete     
 ----
 
 
+[[step-3-define-a-pod-that-attaches-the-pvc]]
 === Etapa 3: defina um pod que conecte o PVC
 
 Conecte o PV a um pod para que ele seja redimensionado. Existem dois cenários ao redimensionar um PV iSCSI:
@@ -118,6 +122,7 @@ Mounted By:    ubuntu-pod
 ----
 
 
+[[step-4-expand-the-pv]]
 === Etapa 4: expandir o PV
 
 Para redimensionar o PV criado de 1Gi para 2Gi, edite a definição do PVC e atualize o `spec.resources.requests.storage` para 2Gi.
@@ -157,6 +162,7 @@ spec:
 ----
 
 
+[[step-5-validate-the-expansion]]
 === Etapa 5: valide a expansão
 
 Você pode validar se a expansão funcionou corretamente conferindo o tamanho do PVC, PV e do volume do Trident:
@@ -178,6 +184,7 @@ tridentctl get volumes -n trident
 ----
 
 
+[[expand-an-fc-volume]]
 == Expandir um volume FC
 
 Você pode expandir um FC Persistent Volume (PV) usando o provisionador CSI.
@@ -187,6 +194,7 @@ NOTE: A expansão de volume FC é suportada pelo  `ontap-san` driver e requer Ku
 
 
 
+[[step-1-configure-the-storageclass-to-support-volume-expansion]]
 === Passo 1: Configurar o StorageClass para suportar a expansão de volume
 
 Edite a definição de StorageClass para definir o campo  `allowVolumeExpansion` como  `true`.
@@ -210,6 +218,7 @@ Para um StorageClass já existente, edite-o para incluir o `allowVolumeExpansion
 
 
 
+[[step-2-create-a-pvc-with-the-storageclass-you-created]]
 === Passo 2: Crie um PVC com o StorageClass que você criou
 
 Edite a definição de PVC e atualize o  `spec.resources.requests.storage` para refletir o novo tamanho desejado, que deve ser maior que o tamanho original.
@@ -246,6 +255,7 @@ pvc-8a814d62-bd58-4253-b0d1-82f2885db671   1Gi        RWO            Delete     
 ----
 
 
+[[step-3-define-a-pod-that-attaches-the-pvc]]
 === Etapa 3: defina um pod que conecte o PVC
 
 Conecte o PV a um pod para que ele seja redimensionado. Existem dois cenários ao redimensionar um PV FC:
@@ -280,6 +290,7 @@ Mounted By:    ubuntu-pod
 ----
 
 
+[[step-4-expand-the-pv]]
 === Etapa 4: expandir o PV
 
 Para redimensionar o PV criado de 1Gi para 2Gi, edite a definição do PVC e atualize o `spec.resources.requests.storage` para 2Gi.
@@ -319,6 +330,7 @@ spec:
 ----
 
 
+[[step-5-validate-the-expansion]]
 === Etapa 5: valide a expansão
 
 Você pode validar se a expansão funcionou corretamente conferindo o tamanho do PVC, PV e do volume do Trident:
@@ -340,12 +352,14 @@ tridentctl get volumes -n trident
 ----
 
 
+[[expand-an-nfs-volume]]
 == Expandir um volume NFS
 
 Trident suporta expansão de volume para NFS PVs provisionados em  `ontap-nas`, `ontap-nas-economy`, `ontap-nas-flexgroup`, e  `azure-netapp-files` backends.
 
 
 
+[[step-1-configure-the-storageclass-to-support-volume-expansion]]
 === Passo 1: Configurar o StorageClass para suportar a expansão de volume
 
 Para redimensionar um NFS PV, o administrador primeiro precisa configurar a classe de armazenamento para permitir expansão de volume, definindo o campo  `allowVolumeExpansion` como  `true`:
@@ -369,6 +383,7 @@ Se você já criou uma classe de armazenamento sem essa opção, basta editar a 
 
 
 
+[[step-2-create-a-pvc-with-the-storageclass-you-created]]
 === Passo 2: Crie um PVC com o StorageClass que você criou
 
 [listing]
@@ -403,6 +418,7 @@ pvc-08f3d561-b199-11e9-8d9f-5254004dfdb7   20Mi       RWO            Delete     
 ----
 
 
+[[step-3-expand-the-pv]]
 === Etapa 3: expandir o PV
 
 Para redimensionar o PV recém-criado de 20 MiB para 1 GiB, edite o PVC e defina  `spec.resources.requests.storage` para 1 GiB:
@@ -442,6 +458,7 @@ spec:
 ----
 
 
+[[step-4-validate-the-expansion]]
 === Etapa 4: valide a expansão
 
 Você pode verificar se o redimensionamento funcionou corretamente conferindo o tamanho do PVC, do PV e do Trident volume:

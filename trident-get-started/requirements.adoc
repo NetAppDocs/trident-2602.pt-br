@@ -16,6 +16,7 @@ Antes de instalar Trident, você deve revisar estes requisitos gerais do sistema
 
 
 
+[[critical-information-about-trident]]
 == Informações essenciais sobre Trident
 
 *Você deve ler as seguintes informações críticas sobre Trident.*
@@ -36,6 +37,7 @@ O uso de configuração sem multipath ou o uso de  `find_multipaths: yes` ou  `f
 ====
 
 
+[[supported-frontends-orchestrators]]
 == Frontends suportados (orquestradores)
 
 Trident suporta vários mecanismos de contêineres e orquestradores, incluindo os seguintes:
@@ -59,6 +61,7 @@ WARNING: Antes de atualizar um cluster Kubernetes de 1.25 para 1.26 ou posterior
 
 
 
+[[supported-backends-storage]]
 == Backends suportados (storage)
 
 Para usar Trident, você precisa de um ou mais dos seguintes backends suportados:
@@ -74,6 +77,7 @@ Para usar Trident, você precisa de um ou mais dos seguintes backends suportados
 
 
 
+[[trident-support-for-kubevirt-and-openshift-virtualization]]
 == Suporte do Trident para KubeVirt e OpenShift Virtualization
 
 .Drivers de storage suportados:
@@ -99,6 +103,7 @@ Trident suporta os seguintes drivers ONTAP para KubeVirt e OpenShift Virtualizat
 
 
 
+[[feature-requirements]]
 == Requisitos de funcionalidade
 
 A tabela abaixo resume os recursos disponíveis nesta versão do Trident e as versões do Kubernetes que ela suporta.
@@ -165,6 +170,7 @@ Não
 |===
 
 
+[[tested-host-operating-systems]]
 == Sistemas operacionais de host testados
 
 Embora Trident não ofereça suporte oficial a sistemas operacionais específicos, os seguintes são conhecidos por funcionar:
@@ -186,6 +192,7 @@ O `tridentctl` utilitário também funciona em qualquer uma dessas distribuiçõ
 
 
 
+[[host-configuration]]
 == Configuração do host
 
 Todos os nós de trabalho no cluster Kubernetes devem ser capazes de montar os volumes que você provisionou para seus pods. Para preparar os nós de trabalho, você deve instalar as ferramentas NFS, iSCSI ou NVMe, dependendo da sua seleção de driver.
@@ -194,6 +201,7 @@ link:../trident-use/worker-node-prep.html["Prepare o nó de trabalho"]
 
 
 
+[[storage-system-configuration]]
 == Configuração do sistema de storage
 
 Trident pode exigir alterações em um sistema de storage antes que uma configuração de backend possa usá-lo.
@@ -202,6 +210,7 @@ link:../trident-use/backends.html["Configurar backends"]
 
 
 
+[[trident-ports]]
 == Portas Trident
 
 Trident requer acesso a portas específicas para comunicação.
@@ -210,12 +219,14 @@ link:../trident-reference/ports.html["Portas Trident"]
 
 
 
+[[container-images-and-corresponding-kubernetes-versions]]
 == Imagens de contêiner e versões correspondentes do Kubernetes
 
 Para instalações isoladas da internet (air-gapped), a lista a seguir serve como referência para as imagens de contêiner necessárias para instalar Trident. Use o comando  `tridentctl images` para verificar a lista de imagens de contêiner necessárias.
 
 
 
+[[container-images-required-for-trident-26-02]]
 === Imagens de contêiner necessárias para Trident 26.02
 
 [cols="2"]

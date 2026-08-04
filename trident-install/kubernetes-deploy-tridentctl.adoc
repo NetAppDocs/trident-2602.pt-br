@@ -16,6 +16,7 @@ Você pode instalar Trident usando  `tridentctl`. Este processo se aplica a inst
 
 
 
+[[critical-information-about-trident10]]
 == Informações críticas sobre Trident10
 
 *Você deve ler as seguintes informações críticas sobre Trident.*
@@ -33,12 +34,13 @@ O uso de configuração sem multipath ou o uso de  `find_multipaths: yes` ou  `f
 ====
 
 
+[[install-trident-using-tridentctl]]
 == Instale Trident usando `tridentctl`
 
 Revise link:kubernetes-deploy.html["visão geral da instalação"] para garantir que você atendeu aos pré-requisitos de instalação e selecionou a opção de instalação correta para o seu ambiente.
 
 .Antes de começar
-Antes de iniciar a instalação, faça login no host Linux e verifique se ele está gerenciando um sistema operacional em funcionamento link:requirements.html["cluster Kubernetes suportado"^] e se você possui os privilégios necessários.
+Antes de iniciar a instalação, faça login no host Linux e verifique se ele está gerenciando um sistema operacional em funcionamento link:../trident-get-started/requirements.html["cluster Kubernetes suportado"] e se você possui os privilégios necessários.
 
 
 NOTE: Com OpenShift, use  `oc` em vez de  `kubectl` em todos os exemplos a seguir e faça login como *system:admin* primeiro executando  `oc login -u system:admin` ou  `oc login -u kube-admin`.
@@ -69,6 +71,7 @@ kubectl run -i --tty ping --image=busybox --restart=Never --rm -- \
 ====
 
 
+[[step-1-download-the-trident-installer-package]]
 == Passo 1: Baixe o pacote de instalação do Trident
 
 O pacote de instalação do Trident cria um pod do Trident, configura os objetos CRD que são usados para manter seu estado e inicializa os sidecars CSI para executar ações como provisionar e anexar volumes aos hosts do cluster. Baixe e extraia a versão mais recente do instalador do Trident de link:https://github.com/NetApp/trident/releases/latest["a seção _Ativos_ em GitHub"^]. Atualize _<trident-installer-XX.XX.X.tar.gz>_ no exemplo com a versão do Trident selecionada.
@@ -81,6 +84,7 @@ cd trident-installer
 ----
 
 
+[[step-2-install-trident]]
 == Passo 2: Instalar Trident
 
 Instale Trident no namespace desejado executando o comando  `tridentctl install`. Você pode adicionar argumentos adicionais para especificar o local do registro de imagens.
@@ -132,12 +136,14 @@ INFO Trident installation succeeded.
 ----
 
 
+[[verify-the-installation]]
 == Verifique a instalação
 
 Você pode verificar sua instalação usando o status de criação do pod ou  `tridentctl`.
 
 
 
+[[using-pod-creation-status]]
 === Usando o status de criação do pod
 
 Você pode confirmar se a instalação do Trident foi concluída verificando o status dos pods criados:
@@ -155,6 +161,7 @@ NOTE: Se o instalador não for concluído com êxito ou  `trident-controller-<ge
 
 
 
+[[using-tridentctl]]
 === Usando `tridentctl`
 
 Você pode usar  `tridentctl` para verificar a versão do Trident instalada.
@@ -171,6 +178,7 @@ Você pode usar  `tridentctl` para verificar a versão do Trident instalada.
 ----
 
 
+[[sample-configurations]]
 == Configurações de exemplo
 
 Os exemplos a seguir fornecem configurações de exemplo para instalar Trident usando `tridentctl`.

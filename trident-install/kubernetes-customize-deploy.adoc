@@ -16,6 +16,7 @@ O operador Trident permite que você personalize a instalação do Trident usand
 
 
 
+[[understanding-controller-pods-and-node-pods]]
 == Entendendo os pods do controlador e os pods do nó
 
 Trident é executado como um único pod de controlador e um pod de nó em cada nó de trabalho do cluster. O pod de nó deve estar em execução em qualquer host onde você deseje montar um volume do Trident.
@@ -28,6 +29,7 @@ Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-p
 
 
 
+[[configuration-options]]
 == Opções de configuração
 
 
@@ -263,6 +265,7 @@ NOTE: Para mais informações sobre formatação de parâmetros de pod, consulte
 
 
 
+[[sample-configurations]]
 == Configurações de exemplo
 
 Você pode usar os atributos em <<Opções de configuração>> ao definir  `TridentOrchestrator` para personalizar sua instalação.

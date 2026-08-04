@@ -23,6 +23,7 @@ Você pode criar, excluir, redimensionar, criar snapshots, clonar, clonar em mod
 
 
 
+[[configure-in-flight-kerberos-encryption-with-on-premise-ontap-volumes]]
 == Configurar criptografia Kerberos em trânsito com volumes ONTAP locais
 
 Você pode habilitar a criptografia Kerberos no tráfego de storage entre seu cluster gerenciado e um backend de storage ONTAP local.
@@ -40,6 +41,7 @@ NOTE: A criptografia Kerberos para o tráfego NFS com backends de storage ONTAP 
 
 
 
+[[add-or-modify-ontap-export-policies]]
 === Adicionar ou modificar políticas de exportação do ONTAP
 
 Você precisa adicionar regras às políticas de exportação ONTAP existentes ou criar novas políticas de exportação que ofereçam suporte à criptografia Kerberos para o volume raiz da máquina virtual de storage ONTAP, bem como para quaisquer volumes ONTAP compartilhados com o cluster Kubernetes upstream. As regras de política de exportação que você adicionar, ou as novas políticas de exportação que você criar, precisam oferecer suporte aos seguintes protocolos de acesso e permissões de acesso:
@@ -77,6 +79,7 @@ Consulte a seguinte documentação para saber como criar políticas de exportaç
 
 
 
+[[create-a-storage-backend]]
 === Crie um backend de storage
 
 Você pode criar uma configuração de backend de storage Trident que inclua a capacidade de criptografia Kerberos.
@@ -144,6 +147,7 @@ Após identificar e corrigir o problema com o arquivo de configuração, você p
 
 
 
+[[create-a-storage-class]]
 === Crie uma storage class
 
 Você pode criar uma classe de armazenamento para provisionar volumes com criptografia Kerberos.
@@ -202,12 +206,14 @@ ontap-nas-sc    csi.trident.netapp.io   15h
 
 
 
+[[provision-volumes]]
 === Provisionar volumes
 
 Após criar um backend de armazenamento e uma classe de armazenamento, você pode provisionar um volume. Para obter instruções, consulte  https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Provisionar um volume"^].
 
 
 
+[[configure-in-flight-kerberos-encryption-with-azure-netapp-files-volumes]]
 == Configurar criptografia Kerberos em trânsito com volumes do Azure NetApp Files
 
 Você pode habilitar a criptografia Kerberos no tráfego de armazenamento entre seu cluster gerenciado e um único back-end de armazenamento Azure NetApp Files ou um pool virtual de back-ends de armazenamento Azure NetApp Files.
@@ -221,6 +227,7 @@ Você pode habilitar a criptografia Kerberos no tráfego de armazenamento entre 
 
 
 
+[[create-a-storage-backend]]
 === Crie um backend de storage
 
 Você pode criar uma configuração de back-end de armazenamento do Azure NetApp Files que inclua a capacidade de criptografia Kerberos.
@@ -347,6 +354,7 @@ Após identificar e corrigir o problema com o arquivo de configuração, você p
 
 
 
+[[create-a-storage-class]]
 === Crie uma storage class
 
 Você pode criar uma classe de armazenamento para provisionar volumes com criptografia Kerberos.
@@ -391,6 +399,7 @@ sc-nfs       csi.trident.netapp.io   15h
 
 
 
+[[provision-volumes]]
 === Provisionar volumes
 
 Após criar um backend de armazenamento e uma classe de armazenamento, você pode provisionar um volume. Para obter instruções, consulte  https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Provisionar um volume"^].

@@ -18,6 +18,7 @@ Um gancho de execução é uma ação personalizada que você pode configurar pa
 
 
 
+[[types-of-execution-hooks]]
 == Tipos de ganchos de execução
 
 Trident Protect suporta os seguintes tipos de ganchos de execução, com base em quando podem ser executados:
@@ -32,6 +33,7 @@ Trident Protect suporta os seguintes tipos de ganchos de execução, com base em
 
 
 
+[[order-of-execution]]
 === Ordem de execução
 
 Quando uma operação de proteção de dados é executada, os eventos de gancho de execução ocorrem na seguinte ordem:
@@ -62,6 +64,7 @@ NOTE: Se um gancho de execução pré-snapshot adicionar, alterar ou remover rec
 
 
 
+[[important-notes-about-custom-execution-hooks]]
 == Observações importantes sobre ganchos de execução personalizados
 
 Considere o seguinte ao planejar os ganchos de execução para seus aplicativos.
@@ -77,6 +80,7 @@ NOTE: Como os hooks de execução frequentemente reduzem ou desativam completame
 
 
 
+[[execution-hook-filters]]
 == Filtros de gancho de execução
 
 Ao adicionar ou editar um gancho de execução para um aplicativo, você pode adicionar filtros ao gancho de execução para gerenciar quais contêineres o gancho irá corresponder. Os filtros são úteis para aplicativos que usam a mesma imagem de contêiner em todos os contêineres, mas podem usar cada imagem para uma finalidade diferente (como Elasticsearch). Os filtros permitem criar cenários em que ganchos de execução são executados em alguns, mas não necessariamente em todos os contêineres idênticos. Se você criar vários filtros para um único gancho de execução, eles serão combinados com um operador lógico AND. Você pode ter até 10 filtros ativos por gancho de execução.
@@ -88,12 +92,14 @@ NOTE: Se você adicionar um filtro de namespace a um gancho de execução que é
 
 
 
+[[execution-hook-examples]]
 == Exemplos de ganchos de execução
 
 Visite o  https://github.com/NetApp/Verda["Projeto NetApp Verda GitHub"] para baixar hooks de execução reais para aplicativos populares como Apache Cassandra e Elasticsearch. Você também pode ver exemplos e obter ideias para estruturar seus próprios hooks de execução personalizados.
 
 
 
+[[create-an-execution-hook]]
 == Crie um gancho de execução
 
 Você pode criar um gancho de execução personalizado para um aplicativo usando Trident Protect. Você precisa ter permissões de Proprietário, Administrador ou Membro para criar ganchos de execução.
@@ -202,6 +208,7 @@ tridentctl-protect create exechook <my_exec_hook_name> --action <action_type> --
 ====
 
 
+[[manually-run-an-execution-hook]]
 == Executar manualmente um gancho de execução
 
 Você pode executar um gancho de execução manualmente para fins de teste ou se precisar executá-lo novamente após uma falha. Você precisa ter permissões de Proprietário, Administrador ou Membro para executar ganchos de execução manualmente.

@@ -19,6 +19,7 @@ NOTE: Apenas o  `ontap-nas`driver (com protocolo NFS) é compatível com sistema
 
 
 
+[[backend-configuration-options]]
 == Opções de configuração do backend
 
 Na configuração do backend do Trident, não é necessário especificar que seu sistema é um NetApp AFX sistema de storage. Ao selecionar  `ontap-nas` como o  `storageDriverName`, o Trident detecta automaticamente o sistema de storage AFX. Alguns parâmetros de configuração do backend não se aplicam a sistemas de storage AFX.
@@ -139,6 +140,7 @@ NOTE: Quando a lista de agregados é atualizada no SVM, a lista é atualizada au
 |===
 
 
+[[backend-configuration-options-for-provisioning-volumes]]
 == Opções de configuração de backend para provisionamento de volumes
 
 Você pode controlar o provisionamento padrão usando essas opções na seção  `defaults` do arquivo de configuração. Para um exemplo, veja os exemplos de configuração abaixo.
@@ -194,6 +196,7 @@ NOTE: O uso de grupos de políticas de QoS com Trident requer ONTAP 9.8 ou poste
 
 
 
+[[volume-provisioning-examples]]
 === Exemplos de provisionamento de volume
 
 Aqui está um exemplo com valores padrão definidos:
@@ -241,6 +244,7 @@ Os backends existentes de instalações anteriores provisionarão volumes confor
 
 
 
+[[minimal-configuration-examples]]
 == Exemplos de configuração mínima
 
 Os exemplos a seguir mostram configurações básicas que deixam a maioria dos parâmetros com os valores padrão. Esta é a maneira mais fácil de definir um backend.
@@ -423,6 +427,7 @@ labels:
 ====
 
 
+[[examples-of-backends-with-virtual-pools]]
 == Exemplos de backends com pools virtuais
 
 Nos arquivos de definição de backend de exemplo mostrados abaixo, valores padrão específicos são definidos para todos os pools de storage, como  `spaceReserve` em none,  `spaceAllocation` em false e  `encryption` em false. Os pools virtuais são definidos na seção de storage.
@@ -608,6 +613,7 @@ storage:
 ====
 
 
+[[map-backends-to-storageclasses]]
 == Mapear back-ends para StorageClasses
 
 As seguintes definições de StorageClass referem-se a <<Exemplos de backends com pools virtuais>>. Usando o campo  `parameters.selector`, cada StorageClass especifica quais pools virtuais podem ser usados para hospedar um volume. O volume terá os aspectos definidos no pool virtual escolhido.
@@ -683,6 +689,7 @@ Trident decidirá qual pool virtual será selecionado e garantirá que o requisi
 
 
 
+[[update-datalif-after-initial-configuration]]
 == Atualize `dataLIF` após a configuração inicial
 
 Você pode alterar o dataLIF após a configuração inicial executando o seguinte comando para fornecer o novo arquivo JSON de backend com o dataLIF atualizado.
@@ -696,10 +703,12 @@ NOTE: Se os PVCs estiverem conectados a um ou mais pods, você deve desligar tod
 
 
 
+[[secure-smb-examples]]
 == Exemplos seguros de SMB
 
 
 
+[[backend-configuration-with-ontap-nas-driver]]
 === Configuração de backend com o driver ontap-nas
 
 [source, yaml]
@@ -722,6 +731,7 @@ spec:
 ----
 
 
+[[backend-configuration-with-ontap-nas-economy-driver]]
 === Configuração de backend com o driver ontap-nas-economy
 
 [source, yaml]
@@ -744,6 +754,7 @@ spec:
 ----
 
 
+[[backend-configuration-with-storage-pool]]
 === Configuração de backend com pool de storage
 
 [source, yaml]
@@ -771,6 +782,7 @@ spec:
 ----
 
 
+[[storage-class-example-with-ontap-nas-driver]]
 === Exemplo de classe de armazenamento com o driver ontap-nas
 
 [source, yaml]
@@ -796,6 +808,7 @@ NOTE: Certifique-se de adicionar  `annotations` para habilitar o SMB seguro. O S
 
 
 
+[[storage-class-example-with-ontap-nas-economy-driver]]
 === Exemplo de classe de armazenamento com o driver ontap-nas-economy
 
 [source, yaml]
@@ -818,6 +831,7 @@ volumeBindingMode: Immediate
 ----
 
 
+[[pvc-example-with-a-single-ad-user]]
 === Exemplo de PVC com um único usuário AD
 
 [source, yaml]
@@ -843,6 +857,7 @@ spec:
 ----
 
 
+[[pvc-example-with-multiple-ad-users]]
 === Exemplo de PVC com vários usuários de AD
 
 [source, yaml]

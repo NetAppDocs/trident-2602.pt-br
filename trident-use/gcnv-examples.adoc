@@ -16,6 +16,7 @@ Saiba mais sobre as opções de configuração de back-end para Google Cloud Net
 
 
 
+[[backend-configuration-options]]
 == Opções de configuração do backend
 
 Cada backend provisiona volumes em uma única região do Google Cloud. Para criar volumes em outras regiões, você pode definir backends adicionais.
@@ -74,6 +75,7 @@ Cada backend provisiona volumes em uma única região do Google Cloud. Para cria
 |===
 
 
+[[volume-provisioning-options]]
 == Opções de provisionamento de volume
 
 Você pode controlar o provisionamento de volume padrão na seção  `defaults` do arquivo de configuração.
@@ -96,6 +98,7 @@ Você pode controlar o provisionamento de volume padrão na seção  `defaults` 
 |===
 
 
+[[example-configurations]]
 == Exemplos de configurações
 
 Os exemplos a seguir mostram configurações básicas que deixam a maioria dos parâmetros com os valores padrão. Esta é a maneira mais fácil de definir um backend.
@@ -332,6 +335,7 @@ supportedTopologies:
 ====
 
 
+[[whats-next]]
 == Qual é o próximo passo?
 
 Após criar o arquivo de configuração de backend, execute o seguinte comando:
@@ -359,6 +363,7 @@ Após identificar e corrigir o problema com o arquivo de configuração, você p
 
 
 
+[[storage-class-definitions]]
 == Definições de classe de armazenamento
 
 A seguir está uma definição básica `StorageClass` que se refere ao backend acima.
@@ -412,6 +417,7 @@ Para mais detalhes sobre classes de armazenamento, consulte link:../trident-use/
 
 
 
+[[example-definitions-for-smb-volumes]]
 === Exemplos de definições para volumes SMB
 
 Usando  `nasType`,  `node-stage-secret-name` e  `node-stage-secret-namespace`, você pode especificar um volume SMB e fornecer as credenciais necessárias do Active Directory. Qualquer usuário/senha do Active Directory com qualquer/nenhuma permissão pode ser usado para o segredo do estágio do nó.
@@ -472,6 +478,7 @@ NOTE: `nasType: smb`Filtros para pools que suportam volumes SMB. `nasType: nfs` 
 
 
 
+[[pvc-definition-example]]
 === Exemplo de definição de PVC
 
 [source, yaml]

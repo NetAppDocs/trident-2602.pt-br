@@ -16,6 +16,7 @@ Utilize as recomendações listadas aqui para garantir que sua instalação do T
 
 
 
+[[run-trident-in-its-own-namespace]]
 == Execute Trident em seu próprio namespace
 
 É importante impedir que aplicativos, administradores de aplicativos, usuários e aplicativos de gerenciamento acessem as definições de objetos do Trident ou os pods para garantir um armazenamento confiável e bloquear possíveis atividades maliciosas.
@@ -24,6 +25,7 @@ Para separar os outros aplicativos e usuários do Trident, sempre instale Triden
 
 
 
+[[use-chap-authentication-with-ontap-san-backends]]
 == Use autenticação CHAP com backends SAN do ONTAP
 
 Trident oferece suporte à autenticação baseada em CHAP para cargas de trabalho ONTAP SAN (usando os drivers  `ontap-san` e  `ontap-san-economy`). NetApp recomenda o uso de CHAP bidirecional com Trident para autenticação entre um host e o backend de storage.
@@ -32,6 +34,7 @@ Para backends ONTAP que utilizam os drivers de armazenamento SAN, Trident pode c
 
 
 
+[[use-chap-authentication-with-netapp-hci-and-solidfire-backends]]
 == Use autenticação CHAP com NetApp HCI e SolidFire backends
 
 NetApp recomenda implantar CHAP bidirecional para garantir autenticação entre um host e os backends NetApp HCI e SolidFire. Trident usa um objeto secreto que inclui duas senhas CHAP por tenant. Quando Trident é instalado, ele gerencia os segredos CHAP e os armazena em um `tridentvolume` objeto CR para o respectivo PV. Quando você cria um PV, Trident usa os segredos CHAP para iniciar uma sessão iSCSI e se comunicar com o sistema NetApp HCI e SolidFire via CHAP.
@@ -41,6 +44,7 @@ NOTE: Os volumes criados pelo Trident não estão associados a nenhum Volume Acc
 
 
 
+[[use-trident-with-nve-and-nae]]
 == Use Trident com NVE e NAE
 
 NetApp ONTAP fornece criptografia de dados em repouso para proteger dados confidenciais caso um disco seja roubado, devolvido ou reutilizado. Para detalhes, consulte link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html["Configurar visão geral da criptografia de volume NetApp"^].

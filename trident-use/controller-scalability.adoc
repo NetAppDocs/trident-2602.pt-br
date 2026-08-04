@@ -16,10 +16,12 @@ Trident introduz escalabilidade do controlador por meio de maior simultaneidade 
 
 
 
+[[key-concepts-and-definitions]]
 == Conceitos e definições principais
 
 
 
+[[controller-scalability]]
 === Escalabilidade do controlador
 
 A escalabilidade do controlador refere-se à capacidade do controlador Trident de processar múltiplas operações de armazenamento em paralelo, em vez de serializá-las por trás de um único bloqueio. Essas operações incluem criação, exclusão e redimensionamento de volumes, criação e exclusão de snapshots, publicação e cancelamento de publicação de volumes e gerenciamento de backend.
@@ -28,12 +30,14 @@ Quando a escalabilidade do controlador está habilitada, as operações em difer
 
 
 
+[[controller-scalability-support]]
 == Suporte à escalabilidade do controlador
 
 Trident oferece suporte à escalabilidade com diferentes níveis de maturidade, dependendo do driver de armazenamento.
 
 
 
+[[general-availability]]
 === Disponibilidade geral
 
 Os seguintes drivers oferecem suporte à escalabilidade em disponibilidade geral no Trident 26.02:
@@ -50,12 +54,14 @@ Os  `google-cloud-netapp-volumes` e  `google-cloud-netapp-volumes-san` drivers s
 ====
 
 
+[[enable-controller-scalability]]
 == Habilitar escalabilidade do controlador
 
 A escalabilidade do controlador é controlada pela  `enableConcurrency` opção de configuração. Essa opção deve ser explicitamente habilitada durante a instalação do Trident ou atualizando uma implantação existente.
 
 
 
+[[trident-operator-deployment]]
 === Desdobramento do operador Trident
 
 Para habilitar a escalabilidade do controlador com o Trident operator, defina  `enableConcurrency` como  `true` no  `TridentOrchestrator` recurso personalizado.
@@ -100,6 +106,7 @@ kubectl get torc trident -o jsonpath='{.status.currentInstallationParams.enableC
 ----
 
 
+[[helm-deployment]]
 === Implantação Helm
 
 Para habilitar a escalabilidade do controlador com o Helm, defina o valor  `enableConcurrency` como  `true`.
@@ -135,6 +142,7 @@ helm install trident netapp-trident/trident-operator --namespace trident --creat
 ----
 
 
+[[tridentctl-deployment]]
 === implantação do tridentctl
 
 Para habilitar a escalabilidade do controlador com  `tridentctl`, passe a flag  `--enable-concurrency` durante a instalação.
@@ -160,6 +168,7 @@ tridentctl install -n trident --enable-concurrency
 ----
 
 
+[[verify-controller-scalability-is-enabled]]
 === Verifique se a escalabilidade está ativada
 
 Após habilitar a escalabilidade do controlador, verifique se o Trident controller está em execução com a concorrência habilitada consultando os logs do pod do controlador:
@@ -172,6 +181,7 @@ Você deverá ver uma entrada de log indicando que a simultaneidade está habili
 
 
 
+[[technical-preview]]
 === Prévia técnica
 
 Os seguintes drivers oferecem suporte à escalabilidade como uma prévia técnica no Trident 26.02:
@@ -189,6 +199,7 @@ Para estes drivers:
 
 
 
+[[concurrency-behavior]]
 == Comportamento de concorrência
 
 Quando a escalabilidade do controlador está ativada:
@@ -202,6 +213,7 @@ Quando a escalabilidade do controlador está ativada:
 
 
 
+[[known-limitations-and-considerations]]
 == Limitações e considerações conhecidas
 
 As seguintes considerações aplicam-se à escalabilidade do controlador:
@@ -220,6 +232,7 @@ As seguintes considerações aplicam-se à escalabilidade do controlador:
 
 
 
+[[caveats-and-limitations]]
 == Ressalvas e limitações
 
 As seguintes limitações se aplicam em Trident 26.02:
@@ -237,6 +250,7 @@ As seguintes limitações se aplicam em Trident 26.02:
 
 
 
+[[recommendations]]
 == Recomendações
 
 * Utilize drivers de disponibilidade geral (GA) para ambientes de produção que exigem alta escalabilidade

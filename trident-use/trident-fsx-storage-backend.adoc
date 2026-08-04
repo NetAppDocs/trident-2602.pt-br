@@ -13,17 +13,19 @@ summary: 'Ao usar Trident com Amazon FSx for NetApp ONTAP, você pode garantir q
 
 
 
+[[overview]]
 == Visão geral
 
 Antes de provisionar volumes usando Trident, você precisa integrar seu backend de armazenamento ao Trident criando uma Trident Backend Configuration (TBC). A TBC define como Trident se conecta ao backend de armazenamento e fornece as informações necessárias para que Trident gerencie os recursos de storage.
 
 
 
+[[create-a-trident-backend-configuration-tbc-for-fsx-for-ontap]]
 == Criar uma configuração de backend Trident (TBC) para FSx for ONTAP
 
 Existem duas maneiras de configurar o backend do Trident para usar um sistema de arquivos FSx for ONTAP: * Criar um StorageClass que utilize o recurso de Backend Automático. * Criar o backend e o StorageClass separadamente.
 
-Os passos desta seção explicam como criar o backend separadamente. Para obter informações sobre como usar o recurso de Backend Automático, consulte a seção link:trident-fsx-storageclass-pvc.html#configure-a-kubernetes-storageclass-object-with-automatic-backend-configuration-support-for-fsx-for-ontap["Configurar StorageClass e PVC"] para mais informações.
+Os passos desta seção explicam como criar o backend separadamente. Para obter informações sobre como usar o recurso de Backend Automático, consulte a seção link:trident-fsx-storageclass-pvc.html["Configurar StorageClass e PVC"] para mais informações.
 
 Para criar um backend de armazenamento, você precisa criar um arquivo de configuração em formato JSON ou YAML. O arquivo deve especificar o tipo de storage desejado (NAS ou SAN), o sistema de arquivos, a SVM de onde obtê-lo e como autenticar com ela. O exemplo a seguir mostra como definir um storage baseado em NAS e usar um segredo da AWS para armazenar as credenciais da SVM que você deseja usar:
 
@@ -110,6 +112,7 @@ backend-tbc-ontap-nas        tbc-ontap-nas        933e0071-66ce-4324-b9ff-f96d91
 
 
 
+[[fsx-for-ontap-driver-details]]
 == Detalhes do driver FSx for ONTAP
 
 Você pode integrar Trident com Amazon FSx for NetApp ONTAP usando os seguintes drivers:
@@ -142,6 +145,7 @@ backend-fsx-ontap-nas   backend-fsx-ontap-nas   7a551921-997c-4c37-a1d1-f2f4c87f
 ----
 
 
+[[backend-advanced-configuration-and-examples]]
 == Configuração avançada do backend e exemplos
 
 Consulte a tabela a seguir para as opções de configuração do backend:
@@ -234,6 +238,7 @@ Consulte a tabela a seguir para as opções de configuração do backend:
 |===
 
 
+[[backend-configuration-options-for-provisioning-volumes]]
 == Opções de configuração de backend para provisionamento de volumes
 
 Você pode controlar o provisionamento padrão usando essas opções na seção  `defaults` do arquivo de configuração. Para um exemplo, veja os exemplos de configuração abaixo.
@@ -280,6 +285,7 @@ Você pode controlar o provisionamento padrão usando essas opções na seção 
 |===
 
 
+[[provision-smb-volumes]]
 == Provisionar volumes SMB
 
-Você pode provisionar volumes SMB usando o  `ontap-nas` driver. Antes de concluir link:trident-fsx-storage-backend.html#ontap-san-and-nas-driver-integration["Integração do driver ONTAP SAN e NAS"], execute estas etapas: link:worker-node-prep.html#prepare-to-provision-smb-volumes.html["Prepare-se para provisionar volumes SMB"].
+Você pode provisionar volumes SMB usando o  `ontap-nas` driver. Antes de concluir link:trident-fsx-storage-backend.html#fsx-for-ontap-driver-details["Integração do driver ONTAP SAN e NAS"], execute estas etapas: link:worker-node-prep.html#prepare-to-provision-smb-volumes["Prepare-se para provisionar volumes SMB"].

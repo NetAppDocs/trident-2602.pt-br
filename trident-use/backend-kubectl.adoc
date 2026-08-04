@@ -16,6 +16,7 @@ Um backend define a relação entre Trident e um sistema de storage. Ele informa
 
 
 
+[[tridentbackendconfig]]
 == `TridentBackendConfig`
 
 `TridentBackendConfig` (`tbc`, `tbconfig`, `tbackendconfig`) é um CRD de frontend com namespace que permite gerenciar backends do Trident usando  `kubectl`. Administradores de Kubernetes e de storage agora podem criar e gerenciar backends diretamente por meio da CLI do Kubernetes sem a necessidade de um utilitário de linha de comando dedicado (`tridentctl`).
@@ -72,6 +73,7 @@ TIP: Os backends que foram criados com `tridentctl` não possuem um objeto `Trid
 
 
 
+[[steps-overview]]
 == Visão geral das etapas
 
 Para criar um novo backend usando  `kubectl`, você deve fazer o seguinte:
@@ -84,6 +86,7 @@ Após criar um backend, você pode observar seu status usando  `kubectl get tbc 
 
 
 
+[[step-1-create-a-kubernetes-secret]]
 == Passo 1: criar um segredo do Kubernetes
 
 Crie um segredo que contenha as credenciais de acesso ao backend. Isso é exclusivo para cada serviço/plataforma de storage. Veja um exemplo:
@@ -176,6 +179,7 @@ O segredo criado nesta etapa será referenciado no campo  `spec.credentials` do 
 
 
 
+[[step-2-create-the-tridentbackendconfig-cr]]
 == Etapa 2: Criar o `TridentBackendConfig` CR
 
 Agora você está pronto para criar seu `TridentBackendConfig` CR. Neste exemplo, um backend que utiliza o `ontap-san` driver é criado usando o `TridentBackendConfig` objeto mostrado abaixo:
@@ -202,6 +206,7 @@ spec:
 ----
 
 
+[[step-3-verify-the-status-of-the-tridentbackendconfig-cr]]
 == Etapa 3: Verificar o status do  `TridentBackendConfig`CR
 
 Agora que você criou o `TridentBackendConfig` CR, pode verificar o status. Veja o exemplo a seguir:
@@ -232,6 +237,7 @@ Nesta etapa, um backend foi criado com sucesso! Existem diversas operações que
 
 
 
+[[optional-step-4-get-more-details]]
 == (Opcional) Passo 4: obtenha mais detalhes
 
 Você pode executar o seguinte comando para obter mais informações sobre seu backend:

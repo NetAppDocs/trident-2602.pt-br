@@ -16,6 +16,7 @@ O recurso de desanexação forçada do Trident permite desanexar automaticamente
 
 
 
+[[details-about-force-detach]]
 == Detalhes sobre force detach
 
 A desanexação forçada está disponível para `ontap-san`, `ontap-san-economy`, `ontap-nas` e `ontap-nas-economy` apenas. Antes de habilitar a desanexação forçada, o desligamento não gradual do nó (NGNS) deve estar habilitado no cluster Kubernetes. O NGNS está habilitado por padrão para Kubernetes 1.28 e superiores. Para obter mais informações, consulte link:https://kubernetes.io/docs/concepts/cluster-administration/node-shutdown/#non-graceful-node-shutdown["Kubernetes: encerramento abrupto de nós"^].
@@ -44,12 +45,14 @@ Quando a integridade do nó for restaurada e a taint for removida, Trident irá:
 
 
 
+[[details-about-automated-failover]]
 == Detalhes sobre failover automatizado
 
 Você pode automatizar o processo de desanexação forçada por meio da integração com link:https://github.com/medik8s/node-healthcheck-operator["operador de verificação de integridade do nó (NHC)"^]. Quando ocorre uma falha em um nó, o NHC aciona a remediação de nó do Trident (TNR) e a desanexação forçada automaticamente, criando um CR TridentNodeRemediation no namespace do Trident definindo o nó com falha. O TNR é criado somente após a falha do nó e removido pelo NHC assim que o nó volta a ficar online ou é excluído.
 
 
 
+[[failed-node-pod-removal-process]]
 === Falha no processo de remoção do pod do nó
 
 O failover automatizado seleciona as cargas de trabalho a serem removidas do nó com falha. Quando um TNR é criado, o controlador TNR marca o nó como sujo, impedindo novas publicações de volume e começa a remover os pods compatíveis com desanexação forçada e seus anexos de volume.
@@ -88,6 +91,7 @@ Essas anotações podem ser aplicadas a qualquer pod.
 ====
 
 
+[[tridentnoderemediation-cr]]
 === CR TridentNodeRemediation
 
 O TridentNodeRemediation (TNR) CR define um nó com falha. O nome do TNR é o nome do nó com falha.
@@ -135,6 +139,7 @@ Os TNRs podem estar em um dos seguintes estados:
 
 
 
+[[enabling-automated-failover]]
 === Habilitando o failover automatizado
 
 *Pré-requisitos*:
@@ -150,7 +155,7 @@ Os TNRs podem estar em um dos seguintes estados:
 
 
 
-NOTE: Você também pode usar métodos alternativos para detectar falha de nó, conforme especificado na <<Integrating Custom Node Health Check Solutions>> seção abaixo.
+NOTE: Você também pode usar métodos alternativos para detectar falha de nó, conforme especificado na <<Integrando soluções personalizadas de verificação de integridade de nós>> seção abaixo.
 
 Consulte link:https://www.redhat.com/en/blog/node-health-check-operator["Operador de verificação de integridade do nó"^] para mais informações.
 
@@ -198,6 +203,7 @@ Para opções de configuração adicionais, consulte link:https://github.com/med
 
 
 
+[[additional-setup-information]]
 === Informações adicionais de configuração
 
 Quando Trident é instalado com o recurso de desanexação forçada ativado, dois recursos adicionais são criados automaticamente no namespace do Trident para facilitar a integração com NHC: TridentNodeRemediationTemplate (TNRT) e ClusterRole.
@@ -246,6 +252,7 @@ rules:
 ----
 
 
+[[k8s-cluster-upgrades-and-maintenance]]
 === Atualizações e manutenção de cluster K8s
 
 Para evitar qualquer failover, pause o failover automatizado durante a manutenção ou atualizações do K8s, quando se espera que os nós fiquem indisponíveis ou reinicializem. Você pode pausar o CR do NHC (descrito acima) aplicando um patch no seu CR:
@@ -256,6 +263,7 @@ Isso pausa o failover automatizado. Para reativar o failover automatizado, remov
 
 
 
+[[limitations]]
 === Limitações
 
 * As operações de E/S são bloqueadas apenas nos nós com falha para volumes compatíveis com force-detach. Somente os pods que utilizam volumes/PVCs compatíveis com force-detach são removidos automaticamente.
@@ -264,6 +272,7 @@ Isso pausa o failover automatizado. Para reativar o failover automatizado, remov
 
 
 
+[[integrating-custom-node-health-check-solutions]]
 === Integrando soluções personalizadas de verificação de integridade de nós
 
 Você pode substituir o Node Healthcheck Operator por ferramentas alternativas de detecção de falhas de nó para acionar o failover automatizado. Para garantir a compatibilidade com o mecanismo de failover automatizado, sua solução personalizada deve:
